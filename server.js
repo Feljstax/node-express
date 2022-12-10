@@ -1,6 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const campsiteRouter = require('./routes/campsiteRouter');
+const promotionRouter = require('./routes/promotionRouter');
+const partnerRouter = require('./routes/partnerRouter');
 
 const hostname = 'localhost';
 const port = 3000;
@@ -15,6 +17,9 @@ app.use(express.json());
 //Implementing the router for campsites
 app.use('/campsites', campsiteRouter);
 
+app.use('/promotions', promotionRouter);
+
+app.use('/partners', partnerRouter);
 
 //Modify Express to serve files from public folder with middeware
 //__dirname is a special variable in Node. It refers to absolute path of current directory of the file it's in
