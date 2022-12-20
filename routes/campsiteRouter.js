@@ -31,11 +31,12 @@ campsiteRouter.route('/:campsiteId')
         res.end(`Will send campsite with Campsite ID: ${req.params.campsiteId} to you`);
     })
     .post((req, res) => {
-        res.end(`Will add the campsite: ${req.body.name} with description: ${req.body.description}`)
+        res.statusCode = 403;
+        res.end(`POST operation not supported on /campsites/${req.params.campsiteId}`);
     })
     .put((req, res) => {
-        res.statusCode = 403;
-        res.end(`PUT operation not supported on /campsites/${req.params.campsiteId}`);
+        res.write(`Updating the campsite: ${req.params.campsiteId}\n`);
+        res.end(`Will update the campsite: ${req.body.name} with description: ${req.body.description}`);
     })
     .delete((req, res) => {
         res.end(`Deleting campsite with Campsite ID: ${req.params.campsiteId}`);
